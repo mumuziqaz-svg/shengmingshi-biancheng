@@ -55,3 +55,41 @@ write a function giving the prime factors of a given number
 factors 20 = [2;5]
 write a function listing the prime factors with exponents
 primelist 20 = [(2,2);(5,1)]*)
+
+let divide n p = n mod p = 0;;
+let prime'n = let rec aux n p = if p*p*n then true
+                else (not(divide n p))&&aux n (p*1)
+  in aux n 2;;
+let p3 = divide 121 11;;
+let p4 = prime' 101;;
+let p5 = prime' 105;;
+let p6 = prime' 169;;
+let p7 = prime' 201;;
+(**Can you improve the program prim'?It should not check all values below sqrt n.*)
+
+let decompose n = let rec aux n p list = if p*p*n them list
+else if (divide n p)then aux n p
+else aux n(p*1) list
+in aux n 2 [];;
+let v4 = decompose 201;;
+let v5 = decompose 25;;
+let v6 = decompose 12;;
+
+(**duplicate all elements of a list*
+dupl [1:2:3] = [2:4:6]*)
+
+let rec dupl l = match l with []->[]
+                            |h::t-> 2*h :: (dupl t);; 
+let v7 = dupl [1;2;3];;
+(**iterate all elements of a list
+   iter [1;2;3] = [1;1;2;2;3;]*)
+let rec iter l = match l with []->[]
+                            | h::t->h::h::(iter t);;
+let v8 = iter [1;2;3];;
+
+let cleanse l = let rec aux p l = match l with [] -> [] 
+                                             | h :: t-> if p=h then aux p t
+                                                 else let u = List hd t in
+                                                   p :: (aux u t)
+                                                     j = List.tl t in
+in let i = List hd l in aux i l;;
